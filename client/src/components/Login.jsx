@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { assets } from '../assets/assets'
 import { AppContext } from '../context/AppContext'
 import { motion } from 'framer-motion'
@@ -18,7 +18,7 @@ const Login = () => {
 
      try {
       if (state === 'Login') {
-        const { data } = await axios.post(backendUrl + '/api/user/login', { email, password });
+        const { data } = await axios.post(backendUrl + '/api/users/login', { email, password });
         if (data.success) {
           setToken(data.token);
           setUser(data.user);
@@ -28,7 +28,7 @@ const Login = () => {
           toast.error(data.message);
         }
       } else {
-        const { data } = await axios.post(backendUrl + '/api/user/register', { name, email, password });
+        const { data } = await axios.post(backendUrl + '/api/users/register', { name, email, password });
         if (data.success) {
           setToken(data.token);
           setUser(data.user);
@@ -81,7 +81,7 @@ const Login = () => {
 
         <button className='bg-blue-600 w-full text-white py-2 rounded-full'>{state === 'Login' ? 'login' : 'create account'}</button>
 
-        {state === 'Login' ? <p className='mt-5 text-center'>Don't have an account?<span className='text-blue-600 cursor-pointer' onClick={()=>setState('Sign up')}>Sign up</span></p>
+        {state === 'Login' ? <p className='mt-5 text-center'>Don&apos;t have an account?<span className='text-blue-600 cursor-pointer' onClick={()=>setState('Sign up')}>Sign up</span></p>
         :
 
         <p className='mt-5 text-center'>Already have an account?<span className='text-blue-600 cursor-pointer' onClick={()=>setState('Login')}>Login</span></p>}

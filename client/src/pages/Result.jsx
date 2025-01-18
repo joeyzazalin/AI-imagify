@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import { useContext, useState } from 'react'
 import { assets } from '../assets/assets'
 import {motion} from 'framer-motion'
+import { AppContext } from '../context/AppContext'
 
  const Result = () => {
 
@@ -9,8 +10,20 @@ import {motion} from 'framer-motion'
   const [Loading, setLoading] = useState(false)
   const [input, setInput] = useState('')
 
-  const onSubmitHandler = async (e) => {
+  const {generateImage} = useContext(AppContext)
 
+  const onSubmitHandler = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+
+    if(input){
+      const image = await generateImage(input)
+      if(image){
+        setIsImageLoaded(true)
+        setImage(image)
+      }
+    }
+    setLoading(false)
   }
 
   return (
@@ -32,7 +45,7 @@ import {motion} from 'framer-motion'
     <div  className='flex w-full max-w-xl bg-neutral-500 text-white text-sm p-0.5 mt-10 rounded-full'>
       <input
       onChange={(e) => setInput(e.target.value)} value={input} 
-      type='text' placeholder='Describe what you want to generate' className='flex-1 bg-transparent outline-none ml-8 max-sm:w-20' placeholder-color/>
+      type='text' placeholder='Describe what you want to generate' className='flex-1 bg-transparent outline-none ml-8 max-sm:w-20'/>
       <button type='submit'  className='bg-zinc-900 px-10 sm:px-16 py-3 rounded-full'>Generate</button>
     </div>
     }
