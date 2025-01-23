@@ -16,21 +16,34 @@ const AppContextProvider = (props) => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const navigate = useNavigate();
 
-    const loadCreditsData = async () => {
-        try {
-            const { data } = await axios.get(`${backendUrl}/api/user/credits`, {
-                headers: { token }
-            });
-                
-            if(data.success) {
-                setCredit(data.creditBalance);
-                setUser(data.user);
+   const loadCreditsData = async () => {
+    try {
+        console.log('Fetching credits...', token); 
+        const { data } = await axios.get(`${backendUrl}/api/user/credits`, {
+            headers: { token }
+        });
+        console.log('Credits response:', data); 
+        
+        if(data.success) {
+            setCredit(data.creditBalance);
+            setUser(data.user);
+        } else {
+              // Only show error if status is not 200
+            if (data.status !== 200) {
+                toast.error(data.message);
             }
-        } catch (error) {
-            toast.error(error.response?.data?.message || error.message);
+        }
+
+
+    } catch (error) {
+        // Only show error toast for actual errors
+        if (error.response?.status === 400) {
+            toast.error(error.response.data.message || 'Bad Request');
+        } else if (error.response?.status === 500) {
+            toast.error('Server Error');
         }
     }
-
+}
     const generateImage = async (prompt) => {
         try {
             setIsLoading(true);
