@@ -34,13 +34,13 @@ cd Ai-imagify
 ### Backend Setup
 ```bash
 cd server
-npm install
+node server.js
 ```
 
 ### Frontend Setup
 ```bash
 cd client
-npm install
+npm run dev
 ```
 
 ### Environment Configuration
@@ -63,13 +63,13 @@ REACT_APP_API_URL=http://localhost:5173
 ### Start Backend
 ```bash
 cd server
-npm start
+node server.js
 ```
 
 ### Start Frontend
 ```bash
 cd client
-npm start
+npm run dev
 ```
 
 ## Usage
