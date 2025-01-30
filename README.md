@@ -6,7 +6,6 @@ Imagify is a web-based application that transforms text descriptions into AI-gen
 
 ## Features
 - Text-to-image generation
-- Responsive web design
 - User-friendly interface
 - Advanced AI image creation
 
