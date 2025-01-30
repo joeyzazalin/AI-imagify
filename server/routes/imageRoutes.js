@@ -4,7 +4,7 @@ import { generateImage } from "../controllers/imageController.js";
 
 const imageRouter = express.Router();
 
-// Debug middleware for image routes
+// middleware for image routes
 imageRouter.use((req, res, next) => {
     console.log('Image route hit:', req.path);
     console.log('Auth header:', req.headers.token);

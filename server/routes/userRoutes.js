@@ -4,7 +4,7 @@ import userAuth from "../middlewares/auth.js"
 
 const userRouter = express.Router()
 
-// Debug middleware specific to user routes
+// middleware specific to user routes
 userRouter.use((req, res, next) => {
     console.log('User route hit:', req.path);
     console.log('Request body in user route:', req.body);

@@ -1,7 +1,7 @@
 # Imagify: AI Image Generator
 
 ## Project Overview
-AImagiNation is a web-based application that transforms text descriptions into AI-generated images using cutting-edge image generation technologies.
+Imagify is a web-based application that transforms text descriptions into AI-generated images using cutting-edge image generation technologies.
 
 
 ## Features
@@ -33,13 +33,13 @@ cd Ai-imagify
 
 ### Backend Setup
 ```bash
-cd backend
+cd server
 npm install
 ```
 
 ### Frontend Setup
 ```bash
-cd frontend
+cd client
 npm install
 ```
 
@@ -53,7 +53,7 @@ AI_API_KEY=your_ai_api_key
 PORT=5000
 ```
 
-Frontend `.env`:
+client `.env`:
 ```
 REACT_APP_API_URL=http://localhost:5173
 ```
@@ -62,13 +62,13 @@ REACT_APP_API_URL=http://localhost:5173
 
 ### Start Backend
 ```bash
-cd backend
+cd server
 npm start
 ```
 
 ### Start Frontend
 ```bash
-cd frontend
+cd client
 npm start
 ```
 
